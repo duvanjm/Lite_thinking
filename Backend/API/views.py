@@ -1,4 +1,3 @@
-from importlib.metadata import files
 import json
 from django.views import View
 from .models import Empresa
