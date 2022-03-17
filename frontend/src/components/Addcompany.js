@@ -88,8 +88,8 @@ function Addcompany() {
                 <input className="button_empresas"
                   type="submit"
                   name="signin"
-                  id="signin"
                   value="Añadir empresa"
+                  id="signin"
                 />
               </div>
               <div id="mensaje"></div>
@@ -102,5 +102,3 @@ function Addcompany() {
 }
 
 export default Addcompany;
-
-
