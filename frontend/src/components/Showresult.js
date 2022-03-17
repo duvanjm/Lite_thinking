@@ -8,22 +8,21 @@ function Showresult(props) {
 
   const [state, setState] = useState({ Nombre_de_la_empresa: "", Direccion: "", NIT: "", Telefono: "" });
 
-  const [key, setKey] = useState(null);
-
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState({ id: null });
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.value });
   }
 
-  const updateCompany = async(id) => {
-    console.log(id);
+  const updateCompany = (event) => {
+    event.preventDefault();
+    console.log(showForm.id);
     if (state.Nombre_de_la_empresa === '' &&
       state.Direccion === '' && state.NIT === ''
       && state.Telefono === '') {
       alert('Porfavor llene los campos para añadir una empresa');
     } else {
-      await axios.put(`http://localhost:8000/api/files/${id}`, {
+      axios.put(`http://localhost:8000/api/files/${showForm.id}`, {
         'Nombre_de_la_empresa': state.Nombre_de_la_empresa,
         'Direccion': state.Direccion,
         'NIT': state.NIT,
@@ -65,7 +64,7 @@ function Showresult(props) {
                 </div>
               </Card.Body>
               <Card.Footer>
-                <Button onClick={() => {setShowForm({ showForm: true }); updateCompany(note.id) }} className="button_update">Update</Button>
+                <Button onClick={() => {setShowForm({ id: note.id }); }} className="button_update">Update</Button>
                 <Button onClick={() => deleteCompany(note.id)} className="button_delete">Delete</Button>
               </Card.Footer>
             </Card>
