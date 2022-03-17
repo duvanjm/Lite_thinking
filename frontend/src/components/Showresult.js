@@ -30,7 +30,7 @@ function Showresult(props) {
       })
         .then((res) => {
           alert('Empresa actualizada exitosamente');
-          console.log(res);
+          setShowForm({ id: null})
           // eslint-disable-next-line no-restricted-globals
           location.reload();
         })
